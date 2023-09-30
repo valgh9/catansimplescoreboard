@@ -1,0 +1,309 @@
+
+.button-30 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-width: 0;
+    box-shadow: rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#d9e7d6 0 -15px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+   
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+  
+  }
+  
+  
+  p{
+      margin: 0;
+      padding: 0;
+  }
+  
+  body{
+      background-color: black;
+  }
+  section{
+      height: 2400px;
+      width: 1080px;
+      margin: 0 auto; /* Center the container horizontally */
+      background-image: url(https://i.ibb.co/zZrLcxy/top-background.jpg);
+  
+  }
+  #score{
+      height: 1140px;
+      width: 1080px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+     
+  }
+  #reset{
+      height: 240px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  #reset-btn{
+      height: 180px;
+      width: 540px;
+      font-size: 85px;
+      font-weight: bold;
+      margin-top: 15px;
+  
+  }
+  #knight-count-container{
+      height: 1020px;
+      width: 1080px;
+      background-color: greenyellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  
+  }
+  #score-box{
+      height: 510px;
+      width: 540px;
+      
+  }
+  .top-row, .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      
+  }
+  
+  .player-score-btn{
+      height: 360px;
+      width: 540px;
+      font-size: 300px;
+      font-weight: bold;
+      color: white;
+      text-shadow: -7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000;
+      
+  }
+  
+  .minus-btn{
+      height: 150px;
+      width: 540px;
+      font-weight: bold;
+      font-size: 120px;
+      color: white;
+      background: rgb(0,0,0);
+      background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(43,43,43,1) 100%);
+  
+  }
+  .minus-btn:active{
+      background: black;
+  
+  }
+  #orange{
+      background: orange;
+      background: linear-gradient(180deg, rgba(255,196,0,1) 0%, rgba(226,140,0,1) 100%);
+      
+      border-style: solid;
+  
+      border-top-width: 15px;
+      border-top-color: orange;
+  
+      border-left-width: 15px;
+      border-left-color: orange;
+  
+      border-right-width: 15px;
+      border-right-color:orange;
+  }
+  
+  
+  #orange:active{
+      background:orange;
+  }
+  
+  #minus-orange{
+      border-style: solid;
+  
+      border-bottom-width: 15px;
+      border-bottom-color:orange;
+  
+      border-left-width: 15px;
+      border-left-color: orange;
+  
+      border-right-width: 15px;
+      border-right-color:orange;
+  }
+  
+  #red{
+      background: red;
+      background: linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(194,0,0,1) 100%);
+  
+      border-style: solid;
+  
+      border-top-width: 15px;
+      border-top-color: red;
+  
+      border-left-width: 15px;
+      border-left-color: red;
+  
+      border-right-width: 15px;
+      border-right-color: red;
+      
+  }
+  #red:active{
+      background:red;
+  }
+  #minus-red{
+      border-style: solid;
+  
+      border-bottom-width: 15px;
+      border-bottom-color: red;
+  
+      border-left-width: 15px;
+      border-left-color:  red;
+  
+      border-right-width: 15px;
+      border-right-color:red;
+  }
+  #blue{
+      background: blue;
+      background: linear-gradient(180deg, rgba(0,0,255,1) 0%, rgba(0,0,186,1) 100%);
+  
+      border-style: solid;
+  
+      border-top-width: 15px;
+      border-top-color: blue;
+  
+      border-left-width: 15px;
+      border-left-color: blue;
+  
+      border-right-width: 15px;
+      border-right-color:blue;
+   
+  }
+  #blue:active{
+      background:blue;
+  }
+  #minus-blue{
+      border-style: solid;
+  
+      border-bottom-width: 15px;
+      border-bottom-color:blue;
+  
+      border-left-width: 15px;
+      border-left-color:  blue;
+  
+      border-right-width: 15px;
+      border-right-color:blue;
+  }
+  #white{
+      background: white;
+      background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+      
+      border-style: solid;
+  
+      border-top-width: 15px;
+      border-top-color:white;
+  
+      border-left-width: 15px;
+      border-left-color: white;
+  
+      border-right-width: 15px;
+      border-right-color: white;
+  }
+  #white:active{
+      background: rgb(255,255,255);
+  }
+  #minus-white{
+      border-style: solid;
+  
+      border-bottom-width: 20px;
+      border-bottom-color:white;
+  
+      border-left-width: 20px;
+      border-left-color:  white;
+  
+      border-right-width: 20px;
+      border-right-color: white;
+  
+  }
+  
+  .score-column{
+      margin-top: 240px;
+      height: 900px;
+      width: 540px;
+      display: flex;
+      justify-content: space-between;
+      
+  }
+  .score-column-elements{
+      display: block;
+  }
+  
+  .score-top-box{
+      height: 540px;
+      width: 540px;
+  
+  }
+  .score-bottom-box{
+      height: 360px;
+      width: 540px;
+  }
+  
+  
+  .score-bottom-box p{
+      text-align: center;
+      font-size: 250px;
+      font-weight: bold;
+      color: white;
+      text-shadow: -7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #score-top-box-pirate button{
+      height: 540px;
+      width: 540px;
+      background: transparent;
+      border: none;
+  }
+  #score-top-box-pirate button:active, #score-bottom-box-pirate button:active{
+  background-color: rgba(192, 0, 0, 0.766)
+  }
+  #score-bottom-box-pirate button{
+      height: 360px;
+      width: 540px;
+      background: transparent;
+      border: none;
+      
+  }
+  #knight-count, #barbs-count{
+      height: 360px;
+      width: 540px;
+  }
+  .reset-section{
+      width: 540px;
+      display: flex;
+      justify-content: space-between;
+  }
+  #clock-btn{
+      height: 180px;
+      width: 540px;
+      font-size: 130px;
+      font-weight: bold;
+      margin-top: 15px;
+      color: white;
+      text-shadow: -7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000;
+      -webkit-tap-highlight-color: transparent;
+  
+  }
+  
