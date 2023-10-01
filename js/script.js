@@ -38,10 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateTimerDisplay() {
 
-   if (minutes === 0 && seconds === 3){
-       beepSound.play();
-    }
-            
     clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     
     if (minutes === 1 && seconds >= 20){ 
@@ -79,7 +75,10 @@ function startTimer() {
                 seconds--;
             }
             updateTimerDisplay();
-
+           if (minutes === 0 && seconds === 3){
+               beepSound.play();
+            }
+             
         }
     }, 1000);
     }
