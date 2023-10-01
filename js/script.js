@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const clockDisplay = document.getElementById('timerDisplay');
        
     const startSound = new Audio('sounds/start.mp3');
-    const beepSound = new Audio('sounds/beep.mp3');  
-    const explSound = new Audio('sounds/explosion.mp3');  
+    startSound.preload = 'auto';
+    const beepSound = new Audio('sounds/beep.mp3');
+    beepSound.preload = 'auto';
+    const explSound = new Audio('sounds/explosion.mp3');
+    explSound.preload = 'auto';
 
     
 
