@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
  
 
     let timerInterval = null;
-    let minutes = 0;
-    let seconds = 6; 
+    let minutes = 2;
+    let seconds = 0; 
 
     function updateTimerDisplay() {
 
