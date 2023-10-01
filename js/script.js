@@ -35,6 +35,11 @@ document.addEventListener("DOMContentLoaded", function() {
     let seconds = 0; 
 
     function updateTimerDisplay() {
+
+   if ((minutes === 0) && (seconds >= 1 && seconds < 4)){
+        beepSound.play();
+    }
+            
     clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     
     if (minutes === 1 && seconds >= 20){ 
@@ -54,11 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
         clockBtn.style.backgroundColor = 'black';
         clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
     }
-
-    if ((minutes === 0) && (seconds >= 1 && seconds < 4)){
-        beepSound.play();
-    }
-    
+   
 
 }
 
