@@ -23,38 +23,23 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const clockBtn = document.getElementById('clock-btn');
     const clockDisplay = document.getElementById('timerDisplay');
-       /*
+        
     const startSound = new Audio('sounds/start.mp3');
     startSound.preload = 'auto';
     const beepSound = new Audio('sounds/beep.mp3');
     beepSound.preload = 'auto';
     const explSound = new Audio('sounds/explosion.mp3');
     explSound.preload = 'auto';
-*/
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-function loadAndPlaySound(soundFile) {
-  fetch(soundFile)
-    .then(response => response.arrayBuffer())
-    .then(data => audioContext.decodeAudioData(data))
-    .then(buffer => {
-      const source = audioContext.createBufferSource();
-      source.buffer = buffer;
-      source.connect(audioContext.destination);
-      source.start(0);
-    })
-    .catch(error => console.error("Error loading sound:", error));
-}
-    
+ 
 
     let timerInterval = null;
-    let minutes = 2;
-    let seconds = 0; 
+    let minutes = 0;
+    let seconds = 6; 
 
     function updateTimerDisplay() {
 
-   if ((minutes === 0) && (seconds >= 1 && seconds < 4)){
-        loadAndPlaySound('sounds/beep.mp3');
+   if (minutes === 0 && seconds === 3){
+       beepSound.play();
     }
             
     clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -72,7 +57,7 @@ function loadAndPlaySound(soundFile) {
         clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#970404 0 -15px 0 inset";
     }
     else if (minutes === 0 && seconds === 0){
-        loadAndPlaySound('sounds/explosion.mp3');
+        explSound.play();
         clockBtn.style.backgroundColor = 'black';
         clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
     }
@@ -116,7 +101,7 @@ function startTimer() {
 
     } else {
         startTimer();
-        loadAndPlaySound('sounds/start.np3');
+       startSound.play();
         
     }
     });
