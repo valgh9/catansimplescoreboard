@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const clockDisplay = document.getElementById('timerDisplay');
       
 
-    const startSound = new Audio('sounds/10s.mp3');
+    const startSound = new Audio('sounds/timer.mp3');
     startSound.preload = 'auto';
        
 
     let timerInterval = null;
-    let minutes = 0;
-    let seconds = 10; 
+    let minutes = 2;
+    let seconds = 0; 
 
     function updateTimerDisplay() {
 
@@ -79,8 +79,8 @@ function startTimer() {
     function stopAndResetTimer() {
         clearInterval(timerInterval);
         timerInterval = null;
-        minutes = 0;
-        seconds = 10;
+        minutes = 2;
+        seconds = 0;
         updateTimerDisplay();
         clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#d9e7d6 0 -15px 0 inset";
 
