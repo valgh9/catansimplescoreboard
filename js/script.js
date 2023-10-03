@@ -24,14 +24,60 @@ document.addEventListener("DOMContentLoaded", function() {
     const clockBtn = document.getElementById('clock-btn');
     const clockDisplay = document.getElementById('timerDisplay');
       
-
     const startSound = new Audio('sounds/timer.mp3');
     startSound.preload = 'auto';
        
+    const imgKnights = document.getElementById('img-knights');
+    const imgShip = document.getElementById('img-ship');
+
+    const leftArrow = document.getElementById('left-arrow');
+    const rightArrow = document.getElementById('right-arrow');
+
+
 
     let timerInterval = null;
     let minutes = 2;
     let seconds = 0; 
+
+    function updateKnightShipGlow(){
+
+        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
+        let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
+
+        if (KnightCurrentCount >= BarbsCurrentCountBtn){
+
+            imgKnights.classList.remove("#");
+            imgKnights.classList.add("glow-white");
+            KnightCount.classList.remove("#");
+            KnightCount.classList.add("glow-white");
+
+            imgShip.classList.remove("glow-red");
+            imgShip.classList.add("#");
+            BarbsCount.classList.remove("glow-red");
+            BarbsCount.classList.add("#");
+            BarbsCount.style.textShadow="-7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000";
+
+            leftArrow.style.display="block";
+            rightArrow.style.display="none";
+
+        } else{
+            imgKnights.classList.remove("glow-white");
+            imgKnights.classList.add("#");
+            KnightCount.classList.remove("glow-white");
+            KnightCount.classList.add("#");
+
+            imgShip.classList.remove("#");
+            imgShip.classList.add("glow-red");
+            BarbsCount.classList.remove("#");
+            BarbsCount.classList.add("glow-red");
+            BarbsCount.style.textShadow="-7px -7px 0 #920000, 7px -7px 0 #6a0000, -7px 7px 0 #760000, 7px 7px 0 #740000";
+
+            leftArrow.style.display="none";
+            rightArrow.style.display="block";
+        }
+
+
+    }
 
     function updateTimerDisplay() {
 
@@ -103,12 +149,14 @@ function startTimer() {
     });
 
 
+
     BarbsCountBtn.addEventListener('click', function() {
 
         let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
         if (BarbsCurrentCountBtn > 0){
             BarbsCurrentCountBtn--; 
             BarbsCount.textContent = BarbsCurrentCountBtn;
+            updateKnightShipGlow();
         }
 
     });
@@ -119,6 +167,7 @@ function startTimer() {
         if (BarbsCurrentCount >= 0){
             BarbsCurrentCount++; 
             BarbsCount.textContent = BarbsCurrentCount;
+            updateKnightShipGlow();
         }
 
     });
@@ -134,6 +183,8 @@ function startTimer() {
             BlueButton.textContent = '0';
             WhiteButton.textContent = '0';
             KnightCount.textContent = '0';
+            updateKnightShipGlow();
+
         }
         });     
 
@@ -148,6 +199,9 @@ function startTimer() {
         KnightCurrentCount++; 
         KnightCount.textContent = KnightCurrentCount;
 
+        updateKnightShipGlow();
+
+
     });
 
     RedButton.addEventListener('click', function() {
@@ -160,6 +214,9 @@ function startTimer() {
         KnightCurrentCount++; 
         KnightCount.textContent = KnightCurrentCount;
 
+        updateKnightShipGlow();
+
+
     });
 
     BlueButton.addEventListener('click', function() {
@@ -171,6 +228,9 @@ function startTimer() {
         let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
         KnightCurrentCount++; 
         KnightCount.textContent = KnightCurrentCount;
+
+        updateKnightShipGlow();
+
     });
 
     WhiteButton.addEventListener('click', function() {
@@ -182,6 +242,9 @@ function startTimer() {
         let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
         KnightCurrentCount++; 
         KnightCount.textContent = KnightCurrentCount;
+
+        updateKnightShipGlow();
+
     });
 
     MinusOrangeButton.addEventListener('click', function() {
@@ -194,6 +257,9 @@ function startTimer() {
             let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
             KnightCurrentCount--; 
             KnightCount.textContent = KnightCurrentCount;
+
+            updateKnightShipGlow();
+
         }
     });
 
@@ -207,6 +273,9 @@ function startTimer() {
             let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
             KnightCurrentCount--; 
             KnightCount.textContent = KnightCurrentCount;
+
+            updateKnightShipGlow();
+
         }
     });
 
@@ -220,6 +289,9 @@ function startTimer() {
             let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
             KnightCurrentCount--; 
             KnightCount.textContent = KnightCurrentCount;
+
+            updateKnightShipGlow();
+
         }
     });
 
@@ -233,6 +305,9 @@ function startTimer() {
             let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
             KnightCurrentCount--; 
             KnightCount.textContent = KnightCurrentCount;
+
+            updateKnightShipGlow();
+
         }
     });
 

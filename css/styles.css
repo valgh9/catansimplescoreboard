@@ -1,3 +1,61 @@
+.glow-red {
+    -webkit-animation: glow-red 1.5s alternate infinite;
+    animation: glow-red 1.5s alternate infinite ;
+  }
+  @-webkit-keyframes glow-red {
+    0% {
+      -webkit-filter: brightness(1) drop-shadow(0 0 0.5rem rgba(249, 0, 0, 0.988));
+      filter: brightness(1) drop-shadow(0 0 1rem rgba(249, 0, 0, 0.988));
+    }
+    100% {
+        -webkit-filter: brightness(1.1) drop-shadow(0 0 4rem rgb(255, 0, 0)) hue-rotate(0deg) contrast(120%);
+        filter: brightness(1.1) drop-shadow(0 0 4rem rgba(249, 0, 0, 0.988)) hue-rotate(0deg) contrast(120%);
+
+    }
+  }
+  @keyframes glow-red {
+    0% {
+      -webkit-filter: brightness(1) drop-shadow(0 0 0.5rem rgba(249, 0, 0, 0.988));
+      filter: brightness(1) drop-shadow(0 0 1rem rgba(249, 0, 0, 0.988));
+    }
+    100% {
+      -webkit-filter: brightness(1.1) drop-shadow(0 0 4rem rgb(255, 0, 0)) hue-rotate(0deg) contrast(120%);
+      filter: brightness(1.1) drop-shadow(0 0 4rem rgb(255, 0, 0)) hue-rotate(0deg) contrast(120%);
+
+    }
+  }
+
+.glow-white {
+    -webkit-animation: glow-white 1.5s alternate infinite;
+    animation: glow-white 1.5s alternate infinite ;
+  }
+  @-webkit-keyframes glow-white {
+    0% {
+      -webkit-filter: brightness(1) drop-shadow(0 0 0.5rem rgb(255, 255, 255));
+      filter: brightness(1) drop-shadow(0 0 0.5rem rgb(255, 255, 255));
+    }
+    100% {
+        -webkit-filter: brightness(1.1) drop-shadow(0 0 3rem rgb(255, 255, 255)) hue-rotate(0deg) contrast(120%);
+        filter: brightness(1.1) drop-shadow(0 0 3rem rgba(255, 255, 255, 0.988)) hue-rotate(0deg) contrast(120%);
+
+    }
+  }
+  @keyframes glow-white {
+    0% {
+      -webkit-filter: brightness(1) drop-shadow(0 0 0.5rem rgb(255, 255, 255));
+      filter: brightness(1) drop-shadow(0 0 0.5rem rgb(255, 255, 255));
+    }
+    100% {
+      -webkit-filter: brightness(1.1) drop-shadow(0 0 3rem rgb(255, 255, 255)) hue-rotate(0deg) contrast(120%);
+      filter: brightness(1.1) drop-shadow(0 0 3rem rgb(255, 255, 255)) hue-rotate(0deg) contrast(120%);
+
+    }
+  }
+/*======================================================================*/
+#barbs-ship-btn, #barbs-count-btn{
+    border-radius: 50%;
+
+}
 
 .button-30 {
     align-items: center;
@@ -40,7 +98,7 @@
   section{
       height: 2400px;
       width: 1080px;
-      margin: 0 auto; 
+      margin: 0 auto;
       background-image: url('../img/top-background.jpg');
   
   }
@@ -247,6 +305,16 @@
       justify-content: space-between;
       
   }
+  #left-arrow, #right-arrow{
+    position: absolute;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  #score-knights, #score-barbarians{
+    z-index: 1;
+    
+  }
+ 
   .score-column-elements{
       display: block;
   }
@@ -261,7 +329,9 @@
       width: 540px;
   }
   
-  
+  #barbs-count{
+    text-shadow: -7px -7px 0 #920000, 7px -7px 0 #6a0000, -7px 7px 0 #760000, 7px 7px 0 #740000;
+  }
   .score-bottom-box p{
       text-align: center;
       font-size: 250px;
