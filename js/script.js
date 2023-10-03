@@ -1,5 +1,5 @@
 
-
+ 
 document.addEventListener("DOMContentLoaded", function() {
         
     
@@ -23,41 +23,37 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const clockBtn = document.getElementById('clock-btn');
     const clockDisplay = document.getElementById('timerDisplay');
-        
-    const startSound = new Audio('../sounds/start.mp3');
+      
+
+    const startSound = new Audio('sounds/10s.mp3');
     startSound.preload = 'auto';
-    const beepSound = new Audio('../sounds/beep.mp3');
-    beepSound.preload = 'auto';
-    const explSound = new Audio('../sounds/explosion.mp3');
-    explSound.preload = 'auto';
- 
+       
 
     let timerInterval = null;
-    let minutes = 2;
-    let seconds = 0; 
+    let minutes = 0;
+    let seconds = 10; 
 
     function updateTimerDisplay() {
 
-    clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    
-    if (minutes === 1 && seconds >= 20){ 
-        clockBtn.style.backgroundColor = 'chartreuse'; 
-        clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#178700 0 -15px 0 inset";
-    }
-    else if ((minutes === 0 && seconds >= 40) || (minutes === 1 && seconds < 20)){ 
-        clockBtn.style.backgroundColor = 'yellow';
-        clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#a19e01 0 -15px 0 inset";
-    }
-    else if ((minutes === 0 ) && (seconds >= 1 && seconds < 40)){ 
-        clockBtn.style.backgroundColor = 'red';
-        clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#970404 0 -15px 0 inset";
-    }
-    else if (minutes === 0 && seconds === 0){
-        explSound.play();
-        clockBtn.style.backgroundColor = 'black';
-        clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
-    }
-   
+        clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        
+        if (minutes === 1 && seconds >= 20){ 
+            clockBtn.style.backgroundColor = 'chartreuse'; 
+            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#178700 0 -15px 0 inset";
+        }
+        else if ((minutes === 0 && seconds >= 40) || (minutes === 1 && seconds < 20)){ 
+            clockBtn.style.backgroundColor = 'yellow';
+            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#a19e01 0 -15px 0 inset";
+        }
+        else if ((minutes === 0 ) && (seconds >= 1 && seconds < 40)){ 
+            clockBtn.style.backgroundColor = 'red';
+            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#970404 0 -15px 0 inset";
+        }
+        else if (minutes === 0 && seconds === 0){
+            clockBtn.style.backgroundColor = 'black';
+            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
+        }
+
 
 }
 
@@ -75,10 +71,7 @@ function startTimer() {
                 seconds--;
             }
             updateTimerDisplay();
-           if (minutes === 0 && seconds === 3){
-               beepSound.play();
-            }
-             
+
         }
     }, 1000);
     }
@@ -86,8 +79,8 @@ function startTimer() {
     function stopAndResetTimer() {
         clearInterval(timerInterval);
         timerInterval = null;
-        minutes = 2;
-        seconds = 0;
+        minutes = 0;
+        seconds = 10;
         updateTimerDisplay();
         clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#d9e7d6 0 -15px 0 inset";
 
@@ -97,10 +90,14 @@ function startTimer() {
         if (timerInterval) {
         stopAndResetTimer();
         clockBtn.style.backgroundColor = 'white';
+        startSound.pause();
+        startSound.currentTime = 0;
 
     } else {
         startTimer();
-       startSound.play();
+        startSound.pause();
+        startSound.currentTime = 0;
+        startSound.play();
         
     }
     });
