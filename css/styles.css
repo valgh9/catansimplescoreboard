@@ -60,7 +60,8 @@
 /*======================================================================*/
 #barbs-ship-btn, #barbs-count-btn{
     border-radius: 50%;
-
+    position: relative;
+    
 }
 
 .button-30 {
@@ -320,6 +321,8 @@
   }
   #score-knights, #score-barbarians{
     z-index: 1;
+    overflow: hidden;
+
     
   }
  
@@ -396,24 +399,22 @@
 
   /******************************************************/
   
-  
   .boat{
-
     animation: boat 9s  cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite;
     will-change: transform;
-  }
+}
   @keyframes boat {
     0%{
       transform: translate3d(0px, 0px, 0px) rotateZ(-2deg);
     }
     25% {    
-      transform: translate3d(0px,10px,30px) rotateZ(2deg);
+      transform: translate3d(0px,10px,30px) rotateZ(1deg);
     }
     50% {    
         transform: translate3d(-20px,-10px,30px) rotateZ(-1deg);
       }
     75% {    
-        transform: translate3d(10px,-10px,30px) rotateZ(2deg);
+        transform: translate3d(10px,-10px,30px) rotateZ(1deg);
       }
     100% {
         transform: translate3d(0px, 0px, 0px) rotateZ(-2deg);
