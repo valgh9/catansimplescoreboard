@@ -393,4 +393,29 @@
       -webkit-tap-highlight-color: transparent;
   
   }
+
+  /******************************************************/
   
+  
+  .boat{
+
+    animation: boat 9s  cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite;
+  }
+  @keyframes boat {
+    0%{
+      transform: translate3d(0px, 0px, 0px) rotateZ(-2deg);
+    }
+    25% {    
+      transform: translate3d(0px,10px,30px) rotateZ(2deg);
+    }
+    50% {    
+        transform: translate3d(-20px,-10px,30px) rotateZ(-1deg);
+      }
+    75% {    
+        transform: translate3d(10px,-10px,30px) rotateZ(2deg);
+      }
+    100% {
+        transform: translate3d(0px, 0px, 0px) rotateZ(-2deg);
+
+    }
+  }
