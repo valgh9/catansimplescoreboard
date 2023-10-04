@@ -400,6 +400,7 @@
   .boat{
 
     animation: boat 9s  cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite;
+    position: absolute;
   }
   @keyframes boat {
     0%{
