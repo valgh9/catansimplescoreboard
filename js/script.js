@@ -41,18 +41,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateKnightShipGlow(){
 
+        // change glow and effects (start if)
+
         let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
         let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
 
         if (KnightCurrentCount >= BarbsCurrentCountBtn){
 
-            imgKnights.classList.remove("#");
+            imgKnights.classList.remove("losing-side");
             imgKnights.classList.add("glow-white");
             KnightCount.classList.remove("#");
             KnightCount.classList.add("glow-white");
+            
 
             imgShip.classList.remove("glow-red");
-            imgShip.classList.add("#");
+            imgShip.classList.add("losing-side");
             BarbsCount.classList.remove("glow-red");
             BarbsCount.classList.add("#");
             BarbsCount.style.textShadow="-7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000";
@@ -60,13 +63,59 @@ document.addEventListener("DOMContentLoaded", function() {
             leftArrow.style.display="block";
             rightArrow.style.display="none";
 
-        } else{
+            
+        //change knights img color
+
+        let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
+        let RedCurrentCount = parseInt(RedButton.textContent, 10);
+        let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
+        let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
+        
+        const knightsCount = [OrangeCurrentCount, RedCurrentCount, BlueCurrentCount, WhiteCurrentCount];
+        
+        function findDuplicateHighestNumbers(arr) {     
+            const maxNumber = Math.max(...arr); // Find the highest number in the array.
+            const duplicates = [];
+            if (maxNumber != 0){
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === maxNumber) {
+                    duplicates.push(arr[i]);
+                }
+            }
+            return duplicates;
+            } else {
+                return [];
+            }
+        }
+
+        const duplicateHighestNumbers = findDuplicateHighestNumbers(knightsCount);
+        const highestValue = Math.max(...knightsCount);
+
+        if (highestValue != 0 && duplicateHighestNumbers.length === 1) {
+            
+            if (highestValue === OrangeCurrentCount){
+                imgKnights.src="img/orange-knight.png";
+            }else if (highestValue === RedCurrentCount){
+                imgKnights.src="img/red-knight.png";
+            }else if (highestValue === BlueCurrentCount){
+                imgKnights.src="img/blue-knight.png";
+            }else if (highestValue === WhiteCurrentCount){
+                imgKnights.src="img/white-knight.png";
+            }
+        } else {
+            imgKnights.src="img/black-knight.png";
+      
+        }
+
+        } else {         // change glow and effects (else)
+
             imgKnights.classList.remove("glow-white");
-            imgKnights.classList.add("#");
+            imgKnights.classList.add("losing-side");
             KnightCount.classList.remove("glow-white");
             KnightCount.classList.add("#");
+            
 
-            imgShip.classList.remove("#");
+            imgShip.classList.remove("losing-side");
             imgShip.classList.add("glow-red");
             BarbsCount.classList.remove("#");
             BarbsCount.classList.add("glow-red");
@@ -74,11 +123,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
             leftArrow.style.display="none";
             rightArrow.style.display="block";
+
+            imgKnights.src="img/black-knight.png";
         }
 
-
     }
-
     function updateTimerDisplay() {
 
         clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;

@@ -51,6 +51,12 @@
 
     }
   }
+.losing-side {
+    
+    -webkit-filter: drop-shadow(0 0 4rem rgb(0, 0, 0)) grayscale(1) brightness(0.5);
+    filter: drop-shadow(0 0 4rem rgb(0, 0, 0)) grayscale(1) brightness(0.5);
+
+  }
 /*======================================================================*/
 #barbs-ship-btn, #barbs-count-btn{
     border-radius: 50%;
@@ -308,7 +314,9 @@
   #left-arrow, #right-arrow{
     position: absolute;
     z-index: -1;
-    opacity: 0.5;
+    opacity: 0.8;
+    
+    
   }
   #score-knights, #score-barbarians{
     z-index: 1;
@@ -346,8 +354,10 @@
       background: transparent;
       border: none;
   }
+  
   #score-top-box-pirate button:active, #score-bottom-box-pirate button:active{
-  background-color: rgba(192, 0, 0, 0.766)
+  background-color: rgba(192, 0, 0, 0.5);
+
   }
   #score-bottom-box-pirate button{
       height: 360px;
