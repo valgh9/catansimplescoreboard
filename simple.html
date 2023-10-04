@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset='utf-8'>
+    <meta charset="UTF-8">
     <title>Catan-C&K simple scoreboard</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+
     <style>
         .button-link {
             background-color: #141414;
@@ -32,34 +33,27 @@
     <section>
 
         <div id="score">
-            <div id="bk"><a href="simple.html" class="button-link">Go to Simple Version</a></div>
+            <div id="bk"><a href="index.html" class="button-link">Go to Custom Version</a></div>
 
             <div class="score-column" id="score-knights">
-                <img src="img/columns-bg-left.png" id="left-arrow" style="display:none;" alt="left-arrow-bg">
                 <div class="score-column-elements">    
                     <div class="score-top-box" id="score-top-box-knights">
-                        <img src="img/black-knight.png" id="img-knights" class="losing-side" alt="knight-image">
+                        <img src="img/knight.png">
                     </div>
                     <div class="score-bottom-box" id="score-bottom-box-knight">
-                        <p id="knight-count" class="#">0</p>
+                        <p id="knight-count">0</p>
                     </div>
 
                 </div>
             </div>
 
            <div class="score-column" id="score-barbarians">
-            <img src="img/columns-bg-right.png" id="right-arrow" alt="right-arrow-bg">
                 <div class="score-column-elements">    
-                    <div class="score-top-box " id="score-top-box-pirate">
-                        <button id="barbs-ship-btn">
-                            <div class="boat">
-                                <img src="img/pirate.png" id="img-ship" class="glow-red" alt="pirateShip-image">
-                            </div>
-                        </button>
-                    
+                    <div class="score-top-box" id="score-top-box-pirate">
+                        <button id="barbs-ship-btn"><img src="img/pirate.png"></button>
                     </div>
                     <div class="score-bottom-box" id="score-bottom-box-pirate">
-                        <button id="barbs-count-btn"><p id="barbs-count" class="glow-red">4</p></button>
+                        <button id="barbs-count-btn"><p id="barbs-count">4</p></button>
                     </div>
 
                 </div>
@@ -104,7 +98,7 @@
         
     </section>
     
-    <script src="js/script.js"></script>
+    <script src="js/bk.js"></script>
 
 </body>
 </html>

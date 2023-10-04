@@ -322,8 +322,6 @@
   #score-knights, #score-barbarians{
     z-index: 1;
     overflow: hidden;
-
-    
   }
  
   .score-column-elements{
@@ -335,8 +333,11 @@
       width: 540px;
   
   }
-  .score-top-box img {
+  #score-top-box-knights img {
     margin-top: 55px;
+  }
+  #score-top-box-pirate img{
+    margin-top: 40px;
   }
   .score-bottom-box{
       height: 360px;
