@@ -53,8 +53,8 @@
   }
 .losing-side {
     
-    -webkit-filter: drop-shadow(0 0 4rem rgb(0, 0, 0)) grayscale(1) brightness(0.5);
-    filter: drop-shadow(0 0 4rem rgb(0, 0, 0)) grayscale(1) brightness(0.5);
+    -webkit-filter: drop-shadow(0 0 4rem rgb(0, 0, 0)) grayscale(1) brightness(0.2);
+    filter: drop-shadow(0 0 4rem rgb(0, 0, 0)) grayscale(1) brightness(0.2);
 
   }
 /*======================================================================*/
@@ -422,3 +422,73 @@
 
     }
   }
+
+/******************************************************************/
+
+/* Style for the dialog overlay (background) */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Style for the dialog container */
+dialog {
+  width: 800px;
+  height: 400px;
+  padding: 50px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-size: 100px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  font-weight: bold;
+  border-width:5px;
+  border-style: solid;
+  border-color: #000;
+  background-color: #e6eaefda;
+  position: relative; 
+  top: -700px;
+}
+
+/* Style for the buttons inside the dialog */
+dialog button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 70px;
+  width: 320px;
+  height: 150px;
+  margin: 30px 20px;
+
+  display: inline-block;
+  color: #E6EAEF;
+  user-select: none;
+  font-weight: bold;
+  text-shadow: -7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000;
+  border-width: 5px;
+  border-style: solid;
+  
+  position: relative;
+  overflow: hidden;
+
+}
+
+#confirm-reset{
+  box-shadow: 0 4px 4px -4px rgba(255, 255, 255, 0.9) inset, 0 160px 80px -80px rgba(255, 255, 255, 0.15) inset, 0 -4px 4px -4px rgba(0, 0, 0, 0.7) inset, 0 -160px 80px -80px rgba(0, 0, 0, 0.06) inset, 0 36px 32px -16px rgba(0, 0, 0, 0.4), 0 8px 4px -4px rgba(0, 0, 0, 0.3), 28px 28px 32px -16px rgba(0, 0, 0, 0.1), -28px 28px 32px -16px rgba(0, 0, 0, 0.1), 0 -16px 48px 8px rgba(91, 215, 35, 0.2);
+  background-color: #54eb0e;
+  border-color: #2a6210;
+
+
+}
+
+#cancel-reset{
+  box-shadow: 0 4px 4px -4px rgba(255, 255, 255, 0.9) inset, 0 160px 80px -80px rgba(255, 255, 255, 0.15) inset, 0 -4px 4px -4px rgba(0, 0, 0, 0.7) inset, 0 -160px 80px -80px rgba(0, 0, 0, 0.06) inset, 0 36px 32px -16px rgba(0, 0, 0, 0.4), 0 8px 4px -4px rgba(0, 0, 0, 0.3), 28px 28px 32px -16px rgba(0, 0, 0, 0.1), -28px 28px 32px -16px rgba(0, 0, 0, 0.1), 0 -16px 48px 8px rgba(91, 215, 35, 0.2);
+  background-color: #ef0b0b;
+  border-color: #621010;
+
+}
+
+dialog p{
+  color: white;
+  text-shadow: -7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000;
+
+}
