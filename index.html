@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset='utf-8'>
+    <meta charset='UTF-8'>
     <title>Catan-C&K simple scoreboard</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <style>
@@ -28,9 +28,16 @@
     </style>
 </head>
 <body>
+    
 
     <section>
 
+        <dialog id="customDialog">
+            <p>Reset?</p>
+            <button id="confirm-reset">Yes</button>
+            <button id="cancel-reset">No</button>
+        </dialog>
+        
         <div id="score">
             <div id="bk"><a href="simple.html" class="button-link">Go to Simple Version</a></div>
 
@@ -67,12 +74,14 @@
         </div>
 
         <div id="reset">
+            
             <div class="reset-section">
                 <button class="button-30" id="reset-btn">RESET</button>
             </div>
             <div class="reset-section">
                 <button class="button-30 timerButton" id="clock-btn"><p id="timerDisplay">2:00</p></button>
             </div>
+           
         </div>
 
         <div id="knight-count-container">
