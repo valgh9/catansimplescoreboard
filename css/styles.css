@@ -445,8 +445,7 @@ dialog {
   border-style: solid;
   border-color: #000;
   background-color: #e6eaefda;
-  position: relative; 
-  top: -500px;
+  
 }
 
 /* Style for the buttons inside the dialog */
