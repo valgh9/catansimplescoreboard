@@ -440,14 +440,13 @@ dialog {
   text-align: center;
   font-size: 100px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.8;
   font-weight: bold;
   border-width:5px;
   border-style: solid;
   border-color: #000;
   background-color: #e6eaefda;
   position: relative; 
-  top: -700px;
+  top: -500px;
 }
 
 /* Style for the buttons inside the dialog */
@@ -490,5 +489,6 @@ dialog button {
 dialog p{
   color: white;
   text-shadow: -7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000;
+  line-height: 1.8;
 
 }
