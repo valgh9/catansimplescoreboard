@@ -33,35 +33,43 @@ document.addEventListener("DOMContentLoaded", function() {
     const leftArrow = document.getElementById('left-arrow');
     const rightArrow = document.getElementById('right-arrow');
 
+    let winningSide = "pirates";
+    let currentTimerColor = "white";
 
+    const customDialog = document.getElementById('customDialog');
+    const confirmResetButton = document.getElementById('confirm-reset');
+    const cancelResetButton = document.getElementById('cancel-reset');
 
     let timerInterval = null;
     let minutes = 2;
     let seconds = 0; 
 
+
     function updateKnightShipGlow(){
-
         // change glow and effects (start if)
-
         let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
         let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
 
         if (KnightCurrentCount >= BarbsCurrentCountBtn){
 
-            imgKnights.classList.remove("losing-side");
-            imgKnights.classList.add("glow-white");
-            KnightCount.classList.remove("#");
-            KnightCount.classList.add("glow-white");
-            
+            if (winningSide !== "knights"){
+                imgKnights.classList.remove("losing-side");
+                imgKnights.classList.add("glow-white");
+                KnightCount.classList.remove("#");
+                KnightCount.classList.add("glow-white");
 
-            imgShip.classList.remove("glow-red");
-            imgShip.classList.add("losing-side");
-            BarbsCount.classList.remove("glow-red");
-            BarbsCount.classList.add("#");
-            BarbsCount.style.textShadow="-7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000";
+                imgShip.classList.remove("glow-red");
+                imgShip.classList.add("losing-side");
+                BarbsCount.classList.remove("glow-red");
+                BarbsCount.classList.add("#");
+                BarbsCount.style.textShadow="-7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000";
 
-            leftArrow.style.display="block";
-            rightArrow.style.display="none";
+                leftArrow.style.display="block";
+                rightArrow.style.display="none";
+
+                winningSide = "knights";
+
+            }
 
             
         //change knights img color
@@ -109,46 +117,54 @@ document.addEventListener("DOMContentLoaded", function() {
 
         } else {         // change glow and effects (else)
 
-            imgKnights.classList.remove("glow-white");
-            imgKnights.classList.add("losing-side");
-            KnightCount.classList.remove("glow-white");
-            KnightCount.classList.add("#");
-            
+            if (winningSide !== "pirates"){
+                imgKnights.classList.remove("glow-white");
+                imgKnights.classList.add("losing-side");
+                KnightCount.classList.remove("glow-white");
+                KnightCount.classList.add("#");
+                
 
-            imgShip.classList.remove("losing-side");
-            imgShip.classList.add("glow-red");
-            BarbsCount.classList.remove("#");
-            BarbsCount.classList.add("glow-red");
-            BarbsCount.style.textShadow="-7px -7px 0 #920000, 7px -7px 0 #6a0000, -7px 7px 0 #760000, 7px 7px 0 #740000";
+                imgShip.classList.remove("losing-side");
+                imgShip.classList.add("glow-red");
+                BarbsCount.classList.remove("#");
+                BarbsCount.classList.add("glow-red");
+                BarbsCount.style.textShadow="-7px -7px 0 #920000, 7px -7px 0 #6a0000, -7px 7px 0 #760000, 7px 7px 0 #740000";
 
-            leftArrow.style.display="none";
-            rightArrow.style.display="block";
+                leftArrow.style.display="none";
+                rightArrow.style.display="block";
 
-            imgKnights.src="img/black-knight.png";
+                imgKnights.src="img/black-knight.png";
+
+                winningSide = "pirates";
+
+            }
+
         }
 
     }
     function updateTimerDisplay() {
 
         clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        
-        if (minutes === 1 && seconds >= 20){ 
+
+        if ((minutes === 1 && seconds >= 20) && currentTimerColor !== "green"){ 
             clockBtn.style.backgroundColor = 'chartreuse'; 
             clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#178700 0 -15px 0 inset";
+            currentTimerColor = "green";
         }
-        else if ((minutes === 0 && seconds >= 40) || (minutes === 1 && seconds < 20)){ 
+        else if (((minutes === 0 && seconds >= 40) || (minutes === 1 && seconds < 20)) && currentTimerColor !== "yellow"){ 
             clockBtn.style.backgroundColor = 'yellow';
             clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#a19e01 0 -15px 0 inset";
+            currentTimerColor = "yellow";
         }
-        else if ((minutes === 0 ) && (seconds >= 1 && seconds < 40)){ 
+        else if (((minutes === 0 ) && (seconds >= 1 && seconds < 40)) && currentTimerColor !== "red"){ 
             clockBtn.style.backgroundColor = 'red';
             clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#970404 0 -15px 0 inset";
+            currentTimerColor = "red";
         }
         else if (minutes === 0 && seconds === 0){
             clockBtn.style.backgroundColor = 'black';
             clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
         }
-
 
 }
 
@@ -177,21 +193,20 @@ function startTimer() {
         minutes = 2;
         seconds = 0;
         updateTimerDisplay();
+        currentTimerColor = "white";
         clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#d9e7d6 0 -15px 0 inset";
+        clockBtn.style.backgroundColor = 'white';
+        startSound.pause();
+        startSound.currentTime = 0;
 
     }
     clockBtn.addEventListener('click', function(){
         
         if (timerInterval) {
         stopAndResetTimer();
-        clockBtn.style.backgroundColor = 'white';
-        startSound.pause();
-        startSound.currentTime = 0;
 
     } else {
         startTimer();
-        startSound.pause();
-        startSound.currentTime = 0;
         startSound.play();
         
     }
@@ -222,21 +237,24 @@ function startTimer() {
     });
 
      ResetButton.addEventListener('click', function() {
+        customDialog.showModal();
+    });
+    
 
+    confirmResetButton.addEventListener('click', () => {
+        OrangeButton.textContent = '0';
+        RedButton.textContent = '0';
+        BlueButton.textContent = '0';
+        WhiteButton.textContent = '0';
+        KnightCount.textContent = '0';
+        updateKnightShipGlow();
+        customDialog.close();
+    });
 
-        const isConfirmed = window.confirm("Are you sure you want to proceed?");
-
-        if (isConfirmed) {
-            OrangeButton.textContent = '0';
-            RedButton.textContent = '0';
-            BlueButton.textContent = '0';
-            WhiteButton.textContent = '0';
-            KnightCount.textContent = '0';
-            updateKnightShipGlow();
-
-        }
-        });     
-
+    cancelResetButton.addEventListener('click', () => {
+        customDialog.close();
+    });
+    
 
     OrangeButton.addEventListener('click', function() {
 
