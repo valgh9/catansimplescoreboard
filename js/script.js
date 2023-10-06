@@ -1,8 +1,8 @@
 
- 
-document.addEventListener("DOMContentLoaded", function() {
-        
-    
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
     const OrangeButton = document.getElementById('orange');
     const RedButton = document.getElementById('red');
     const BlueButton = document.getElementById('blue');
@@ -20,13 +20,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const KnightCount = document.getElementById('knight-count');
     const BarbsCount = document.getElementById('barbs-count');
     const BarbsCountBtn = document.getElementById('barbs-count-btn');
-    
+
     const clockBtn = document.getElementById('clock-btn');
     const clockDisplay = document.getElementById('timerDisplay');
-      
+
     const startSound = new Audio('sounds/timer.mp3');
     startSound.preload = 'auto';
-       
+    const swordSound = new Audio('sounds/sword.mp3');
+    swordSound.preload = 'auto';
+    swordSound.volume = 0.5;
+    const shieldSound = new Audio('sounds/shield.mp3');
+    shieldSound.preload = 'auto';
+    const shipSound = new Audio('sounds/ship.mp3');
+    shipSound.preload = 'auto';
+
     const imgKnights = document.getElementById('img-knights');
     const imgShip = document.getElementById('img-ship');
 
@@ -40,100 +47,206 @@ document.addEventListener("DOMContentLoaded", function() {
     const confirmResetButton = document.getElementById('confirm-reset');
     const cancelResetButton = document.getElementById('cancel-reset');
 
+    const activeKnightsMovement = document.getElementById('active-knights-mov');
+
+    const eventsContainer = document.getElementById('events');
+    const eventBg = document.getElementById('event-bg');
+    const eventImg = document.getElementById('event-img');
+    let resetBtnClicked = false;
+    let animationRunning = false;
+
+
+    const totalAnimationDuration = 1500;
+
     let timerInterval = null;
     let minutes = 2;
-    let seconds = 0; 
+    let seconds = 0;
+
+    /************************************ */
+    function showEventBg() {
 
 
-    function updateKnightShipGlow(){
+        if (!animationRunning) {
+
+            animationRunning = true;
+
+            eventsContainer.style.display = 'block';
+            eventBg.classList.add('fadeIn');
+            setTimeout(() => {
+                eventBg.classList.remove('fadeIn');
+                eventBg.classList.add('fadeOut');
+
+                eventBg.addEventListener('animationend', () => {
+                    // This code will run when the 'fadeOut' animation is completed
+                    eventsContainer.style.display = 'none';
+                    eventBg.classList.remove('fadeOut');
+                    eventImg.src = "";
+                    eventImg.className = "";
+
+                    if (resetBtnClicked) {
+                        resetBtnClicked = false;
+                    }
+
+                    animationRunning = false;
+
+                }, { once: true });
+
+            }, totalAnimationDuration);
+
+        }
+    }
+
+
+    function showSwordsEvent() {
+
+        if (!animationRunning) {
+
+            showEventBg();
+            swordSound.play();
+            eventImg.src = "img/event-swords.png";
+            eventImg.classList.add('animate__animated', 'animate__fadeInLeft');
+            setTimeout(() => {
+                eventImg.classList.remove('animate__animated', 'animate__fadeInLeft');
+                eventImg.classList.add('animate__animated', 'animate__fadeOutLeft');
+
+            }, totalAnimationDuration);
+        }
+    }
+
+    function showShatteredShieldEvent() {
+
+        if (!animationRunning) {
+
+            showEventBg();
+            shieldSound.play();
+            eventImg.src = "img/event-shield.png";
+            eventImg.classList.add('animate__animated', 'animate__fadeInDown');
+            setTimeout(() => {
+                eventImg.classList.remove('animate__animated', 'animate__fadeInDown');
+                eventImg.classList.add('animate__animated', 'animate__fadeOutDown');
+
+            }, totalAnimationDuration);
+        }
+    }
+
+    function showPirateShipEvent() {
+
+        if (!animationRunning) {
+
+            showEventBg();
+            shipSound.play();
+            eventImg.src = "img/event-pirate.png";
+            eventImg.classList.add('animate__animated', 'animate__fadeInRight');
+            setTimeout(() => {
+                eventImg.classList.remove('animate__animated', 'animate__fadeInRight');
+                eventImg.classList.add('animate__animated', 'animate__fadeOutRight');
+
+            }, totalAnimationDuration);
+        }
+    }
+
+    /**************************************** */
+
+    function updateKnightShipGlow() {
         // change glow and effects (start if)
         let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
         let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
 
-        if (KnightCurrentCount >= BarbsCurrentCountBtn){
+        if (KnightCurrentCount >= BarbsCurrentCountBtn) {
 
-            if (winningSide !== "knights"){
-                imgKnights.classList.remove("losing-side");
+            if (winningSide !== "knights") {
+
+                showSwordsEvent();
+
+                imgKnights.className = "";
                 imgKnights.classList.add("glow-white");
-                KnightCount.classList.remove("#");
+                activeKnightsMovement.classList.add("active-knights");
                 KnightCount.classList.add("glow-white");
 
-                imgShip.classList.remove("glow-red");
+                imgShip.className = "";
                 imgShip.classList.add("losing-side");
-                BarbsCount.classList.remove("glow-red");
-                BarbsCount.classList.add("#");
-                BarbsCount.style.textShadow="-7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000";
+                BarbsCount.className = "";
+                BarbsCount.style.textShadow = "-7px -7px 0 #000, 7px -7px 0 #000, -7px 7px 0 #000, 7px 7px 0 #000";
 
-                leftArrow.style.display="block";
-                rightArrow.style.display="none";
+                leftArrow.style.display = "block";
+                rightArrow.style.display = "none";
 
                 winningSide = "knights";
 
+
+
             }
 
-            
-        //change knights img color
 
-        let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
-        let RedCurrentCount = parseInt(RedButton.textContent, 10);
-        let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
-        let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
-        
-        const knightsCount = [OrangeCurrentCount, RedCurrentCount, BlueCurrentCount, WhiteCurrentCount];
-        
-        function findDuplicateHighestNumbers(arr) {     
-            const maxNumber = Math.max(...arr); // Find the highest number in the array.
-            const duplicates = [];
-            if (maxNumber != 0){
-            for (let i = 0; i < arr.length; i++) {
-                if (arr[i] === maxNumber) {
-                    duplicates.push(arr[i]);
+            //change knights img color
+
+            let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
+            let RedCurrentCount = parseInt(RedButton.textContent, 10);
+            let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
+            let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
+
+            const knightsCount = [OrangeCurrentCount, RedCurrentCount, BlueCurrentCount, WhiteCurrentCount];
+
+            function findDuplicateHighestNumbers(arr) {
+                const maxNumber = Math.max(...arr); // Find the highest number in the array.
+                const duplicates = [];
+                if (maxNumber != 0) {
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] === maxNumber) {
+                            duplicates.push(arr[i]);
+                        }
+                    }
+                    return duplicates;
+                } else {
+                    return [];
                 }
             }
-            return duplicates;
+
+            const duplicateHighestNumbers = findDuplicateHighestNumbers(knightsCount);
+            const highestValue = Math.max(...knightsCount);
+
+            if (highestValue != 0 && duplicateHighestNumbers.length === 1) {
+
+                if (highestValue === OrangeCurrentCount) {
+                    imgKnights.src = "img/orange-knight.png";
+                } else if (highestValue === RedCurrentCount) {
+                    imgKnights.src = "img/red-knight.png";
+                } else if (highestValue === BlueCurrentCount) {
+                    imgKnights.src = "img/blue-knight.png";
+                } else if (highestValue === WhiteCurrentCount) {
+                    imgKnights.src = "img/white-knight.png";
+                }
             } else {
-                return [];
-            }
-        }
+                imgKnights.src = "img/black-knight.png";
 
-        const duplicateHighestNumbers = findDuplicateHighestNumbers(knightsCount);
-        const highestValue = Math.max(...knightsCount);
-
-        if (highestValue != 0 && duplicateHighestNumbers.length === 1) {
-            
-            if (highestValue === OrangeCurrentCount){
-                imgKnights.src="img/orange-knight.png";
-            }else if (highestValue === RedCurrentCount){
-                imgKnights.src="img/red-knight.png";
-            }else if (highestValue === BlueCurrentCount){
-                imgKnights.src="img/blue-knight.png";
-            }else if (highestValue === WhiteCurrentCount){
-                imgKnights.src="img/white-knight.png";
             }
-        } else {
-            imgKnights.src="img/black-knight.png";
-      
-        }
 
         } else {         // change glow and effects (else)
 
-            if (winningSide !== "pirates"){
-                imgKnights.classList.remove("glow-white");
+            if (winningSide !== "pirates") {
+
+                if (!resetBtnClicked) {
+                    showShatteredShieldEvent();
+
+                }
+
+
+                imgKnights.className = "";
                 imgKnights.classList.add("losing-side");
-                KnightCount.classList.remove("glow-white");
-                KnightCount.classList.add("#");
-                
+                activeKnightsMovement.className = "";
+                KnightCount.className = "";
 
-                imgShip.classList.remove("losing-side");
+
+                imgShip.classList.className = "";
                 imgShip.classList.add("glow-red");
-                BarbsCount.classList.remove("#");
+                BarbsCount.className = "";
                 BarbsCount.classList.add("glow-red");
-                BarbsCount.style.textShadow="-7px -7px 0 #920000, 7px -7px 0 #6a0000, -7px 7px 0 #760000, 7px 7px 0 #740000";
+                BarbsCount.style.textShadow = "-7px -7px 0 #920000, 7px -7px 0 #6a0000, -7px 7px 0 #760000, 7px 7px 0 #740000";
 
-                leftArrow.style.display="none";
-                rightArrow.style.display="block";
+                leftArrow.style.display = "none";
+                rightArrow.style.display = "block";
 
-                imgKnights.src="img/black-knight.png";
+                imgKnights.src = "img/black-knight.png";
 
                 winningSide = "pirates";
 
@@ -142,49 +255,50 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
     }
+    
     function updateTimerDisplay() {
 
         clockDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-        if ((minutes === 1 && seconds >= 20) && currentTimerColor !== "green"){ 
-            clockBtn.style.backgroundColor = 'chartreuse'; 
-            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#178700 0 -15px 0 inset";
+        if ((minutes === 1 && seconds >= 20) && currentTimerColor !== "green") {
+            clockBtn.style.backgroundColor = 'chartreuse';
+            clockBtn.style.boxShadow = "rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#178700 0 -15px 0 inset";
             currentTimerColor = "green";
         }
-        else if (((minutes === 0 && seconds >= 40) || (minutes === 1 && seconds < 20)) && currentTimerColor !== "yellow"){ 
+        else if (((minutes === 0 && seconds >= 40) || (minutes === 1 && seconds < 20)) && currentTimerColor !== "yellow") {
             clockBtn.style.backgroundColor = 'yellow';
-            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#a19e01 0 -15px 0 inset";
+            clockBtn.style.boxShadow = "rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#a19e01 0 -15px 0 inset";
             currentTimerColor = "yellow";
         }
-        else if (((minutes === 0 ) && (seconds >= 1 && seconds < 40)) && currentTimerColor !== "red"){ 
+        else if (((minutes === 0) && (seconds >= 1 && seconds < 40)) && currentTimerColor !== "red") {
             clockBtn.style.backgroundColor = 'red';
-            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#970404 0 -15px 0 inset";
+            clockBtn.style.boxShadow = "rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#970404 0 -15px 0 inset";
             currentTimerColor = "red";
         }
-        else if (minutes === 0 && seconds === 0){
+        else if (minutes === 0 && seconds === 0) {
             clockBtn.style.backgroundColor = 'black';
-            clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
+            clockBtn.style.boxShadow = "rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#000 0 -15px 0 inset";
         }
 
-}
+    }
 
-function startTimer() {
-    timerInterval = setInterval(function() {
-        if (minutes === 0 && seconds === 0) {
-            clearInterval(timerInterval);
+    function startTimer() {
+        timerInterval = setInterval(function () {
+            if (minutes === 0 && seconds === 0) {
+                clearInterval(timerInterval);
 
-        } else {
-            if (seconds === 0) {
-                minutes--;
-                seconds = 59;
-                
             } else {
-                seconds--;
-            }
-            updateTimerDisplay();
+                if (seconds === 0) {
+                    minutes--;
+                    seconds = 59;
 
-        }
-    }, 1000);
+                } else {
+                    seconds--;
+                }
+                updateTimerDisplay();
+
+            }
+        }, 1000);
     }
 
     function stopAndResetTimer() {
@@ -194,186 +308,177 @@ function startTimer() {
         seconds = 0;
         updateTimerDisplay();
         currentTimerColor = "white";
-        clockBtn.style.boxShadow="rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#d9e7d6 0 -15px 0 inset";
+        clockBtn.style.boxShadow = "rgba(14, 11, 21, 0.54) 0 10px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#d9e7d6 0 -15px 0 inset";
         clockBtn.style.backgroundColor = 'white';
         startSound.pause();
         startSound.currentTime = 0;
 
     }
-    clockBtn.addEventListener('click', function(){
-        
-        if (timerInterval) {
-        stopAndResetTimer();
+    clockBtn.addEventListener('click', function () {
 
-    } else {
-        startTimer();
-        startSound.play();
-        
-    }
+        if (timerInterval) {
+            stopAndResetTimer();
+
+        } else {
+            startTimer();
+            startSound.play();
+
+        }
     });
 
+    activeKnightsMovement.addEventListener('click', function () {
 
+        // free slot 
 
-    BarbsCountBtn.addEventListener('click', function() {
+    });
+
+    BarbsCountBtn.addEventListener('click', function () {
 
         let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
-        if (BarbsCurrentCountBtn > 0){
-            BarbsCurrentCountBtn--; 
+        if (BarbsCurrentCountBtn > 0) {
+            BarbsCurrentCountBtn--;
             BarbsCount.textContent = BarbsCurrentCountBtn;
             updateKnightShipGlow();
         }
 
     });
 
-    BarbsBtn.addEventListener('click', function() {
+    BarbsBtn.addEventListener('click', function () {
 
         let BarbsCurrentCount = parseInt(BarbsCount.textContent, 10);
-        if (BarbsCurrentCount >= 0){
-            BarbsCurrentCount++; 
+        if (BarbsCurrentCount >= 0) {
+            BarbsCurrentCount++;
             BarbsCount.textContent = BarbsCurrentCount;
             updateKnightShipGlow();
         }
 
     });
 
-     ResetButton.addEventListener('click', function() {
+    ResetButton.addEventListener('click', function () {
         customDialog.showModal();
     });
-    
+
 
     confirmResetButton.addEventListener('click', () => {
+
+        resetBtnClicked = true;
         OrangeButton.textContent = '0';
         RedButton.textContent = '0';
         BlueButton.textContent = '0';
         WhiteButton.textContent = '0';
         KnightCount.textContent = '0';
         updateKnightShipGlow();
+        showPirateShipEvent();
+
         customDialog.close();
     });
 
     cancelResetButton.addEventListener('click', () => {
         customDialog.close();
     });
-    
 
-    OrangeButton.addEventListener('click', function() {
+    function increaseKnightCount() {
+
+        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
+        KnightCurrentCount++;
+        KnightCount.textContent = KnightCurrentCount;
+
+        updateKnightShipGlow();
+
+    }
+
+    function decreaseKnightCount() {
+
+        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
+        KnightCurrentCount--;
+        KnightCount.textContent = KnightCurrentCount;
+
+        updateKnightShipGlow();
+    }
+
+    OrangeButton.addEventListener('click', function () {
 
         let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
-        OrangeCurrentCount++; 
+        OrangeCurrentCount++;
         OrangeButton.textContent = OrangeCurrentCount;
 
-        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-        KnightCurrentCount++; 
-        KnightCount.textContent = KnightCurrentCount;
-
-        updateKnightShipGlow();
-
+        increaseKnightCount();
 
     });
 
-    RedButton.addEventListener('click', function() {
+    RedButton.addEventListener('click', function () {
 
         let RedCurrentCount = parseInt(RedButton.textContent, 10);
-        RedCurrentCount++; 
+        RedCurrentCount++;
         RedButton.textContent = RedCurrentCount;
 
-        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-        KnightCurrentCount++; 
-        KnightCount.textContent = KnightCurrentCount;
-
-        updateKnightShipGlow();
-
+        increaseKnightCount();
 
     });
 
-    BlueButton.addEventListener('click', function() {
+    BlueButton.addEventListener('click', function () {
 
         let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
-        BlueCurrentCount++; 
+        BlueCurrentCount++;
         BlueButton.textContent = BlueCurrentCount;
 
-        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-        KnightCurrentCount++; 
-        KnightCount.textContent = KnightCurrentCount;
-
-        updateKnightShipGlow();
+        increaseKnightCount();
 
     });
 
-    WhiteButton.addEventListener('click', function() {
+    WhiteButton.addEventListener('click', function () {
 
         let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
-        WhiteCurrentCount++; 
+        WhiteCurrentCount++;
         WhiteButton.textContent = WhiteCurrentCount;
 
-        let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-        KnightCurrentCount++; 
-        KnightCount.textContent = KnightCurrentCount;
-
-        updateKnightShipGlow();
+        increaseKnightCount();
 
     });
 
-    MinusOrangeButton.addEventListener('click', function() {
+    MinusOrangeButton.addEventListener('click', function () {
 
         let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
-        if (OrangeCurrentCount > 0){
-            OrangeCurrentCount--; 
+        if (OrangeCurrentCount > 0) {
+            OrangeCurrentCount--;
             OrangeButton.textContent = OrangeCurrentCount;
 
-            let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-            KnightCurrentCount--; 
-            KnightCount.textContent = KnightCurrentCount;
-
-            updateKnightShipGlow();
-
+            decreaseKnightCount();
         }
     });
 
-    MinusRedButton.addEventListener('click', function() {
+    MinusRedButton.addEventListener('click', function () {
 
         let RedCurrentCount = parseInt(RedButton.textContent, 10);
-        if (RedCurrentCount > 0){
-            RedCurrentCount--; 
+        if (RedCurrentCount > 0) {
+            RedCurrentCount--;
             RedButton.textContent = RedCurrentCount;
 
-            let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-            KnightCurrentCount--; 
-            KnightCount.textContent = KnightCurrentCount;
-
-            updateKnightShipGlow();
+            decreaseKnightCount();
 
         }
     });
 
-    MinusBlueButton.addEventListener('click', function() {
+    MinusBlueButton.addEventListener('click', function () {
 
         let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
-        if (BlueCurrentCount > 0){
-            BlueCurrentCount--; 
+        if (BlueCurrentCount > 0) {
+            BlueCurrentCount--;
             BlueButton.textContent = BlueCurrentCount;
 
-            let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-            KnightCurrentCount--; 
-            KnightCount.textContent = KnightCurrentCount;
-
-            updateKnightShipGlow();
+            decreaseKnightCount();
 
         }
     });
 
-    MinusWhiteButton.addEventListener('click', function() {
+    MinusWhiteButton.addEventListener('click', function () {
 
         let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
-        if (WhiteCurrentCount > 0){
-            WhiteCurrentCount--; 
+        if (WhiteCurrentCount > 0) {
+            WhiteCurrentCount--;
             WhiteButton.textContent = WhiteCurrentCount;
 
-            let KnightCurrentCount = parseInt(KnightCount.textContent, 10);
-            KnightCurrentCount--; 
-            KnightCount.textContent = KnightCurrentCount;
-
-            updateKnightShipGlow();
+            decreaseKnightCount();
 
         }
     });
