@@ -186,14 +186,15 @@ document.addEventListener("DOMContentLoaded", function () {
             let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
 
             const knightsCount = [OrangeCurrentCount, RedCurrentCount, BlueCurrentCount, WhiteCurrentCount];
+            const highestValue = Math.max(...knightsCount);
+            const duplicateHighestNumbers = findDuplicateHighestNumbers(knightsCount, highestValue);
 
-            function findDuplicateHighestNumbers(arr) {
-                const maxNumber = Math.max(...arr); // Find the highest number in the array.
+            function findDuplicateHighestNumbers(knightsCount, highestValue) {
                 let duplicates = [];
-                if (maxNumber != 0) {
-                    for (let i = 0; i < arr.length; i++) {
-                        if (arr[i] === maxNumber) {
-                            duplicates.push(arr[i]);
+                if (highestValue != 0) {
+                    for (let i = 0; i < knightsCount.length; i++) {
+                        if (knightsCount[i] === highestValue) {
+                            duplicates.push(knightsCount[i]);
                         }
                     }
                     return duplicates;
@@ -201,9 +202,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     return [];
                 }
             }
-
-            const duplicateHighestNumbers = findDuplicateHighestNumbers(knightsCount);
-            const highestValue = Math.max(...knightsCount);
 
             if (highestValue != 0 && duplicateHighestNumbers.length === 1) {
 
