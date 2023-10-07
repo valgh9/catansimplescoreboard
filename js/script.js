@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function findDuplicateHighestNumbers(arr) {
                 const maxNumber = Math.max(...arr); // Find the highest number in the array.
-                const duplicates = [];
+                let duplicates = [];
                 if (maxNumber != 0) {
                     for (let i = 0; i < arr.length; i++) {
                         if (arr[i] === maxNumber) {
