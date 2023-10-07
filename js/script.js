@@ -104,10 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
             showEventBg();
             swordSound.play();
             eventImg.src = "img/event-swords.png";
-            eventImg.classList.add('animate__animated', 'animate__fadeInLeft');
+            eventImg.classList.add('fadeInLeft');
             setTimeout(() => {
-                eventImg.classList.remove('animate__animated', 'animate__fadeInLeft');
-                eventImg.classList.add('animate__animated', 'animate__fadeOutLeft');
+                eventImg.className = "";
+                eventImg.classList.add('fadeOut');
 
             }, totalAnimationDuration);
         }
@@ -120,10 +120,10 @@ document.addEventListener("DOMContentLoaded", function () {
             showEventBg();
             shieldSound.play();
             eventImg.src = "img/event-shield.png";
-            eventImg.classList.add('animate__animated', 'animate__fadeInDown');
+            eventImg.classList.add('fadeInTop');
             setTimeout(() => {
-                eventImg.classList.remove('animate__animated', 'animate__fadeInDown');
-                eventImg.classList.add('animate__animated', 'animate__fadeOutDown');
+                eventImg.className = "";
+                eventImg.classList.add('fadeOut');
 
             }, totalAnimationDuration);
         }
@@ -136,10 +136,10 @@ document.addEventListener("DOMContentLoaded", function () {
             showEventBg();
             shipSound.play();
             eventImg.src = "img/event-pirate.png";
-            eventImg.classList.add('animate__animated', 'animate__fadeInRight');
+            eventImg.classList.add('fadeInRight');
             setTimeout(() => {
-                eventImg.classList.remove('animate__animated', 'animate__fadeInRight');
-                eventImg.classList.add('animate__animated', 'animate__fadeOutRight');
+                eventImg.className = "";
+                eventImg.classList.add('fadeOut');
 
             }, totalAnimationDuration);
         }

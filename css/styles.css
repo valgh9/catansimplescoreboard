@@ -640,11 +640,52 @@ dialog p {
   }
 }
 
-.animate__animated.animate__fadeInLeft,
-.animate__animated.animate__fadeOutRight,
-.animate__animated.animate__fadeInDown,
-.animate__animated.animate__fadeOutDown,
-.animate__animated.animate__fadeInRight,
-.animate__animated.animate__fadeOutLeft {
-  --animate-duration: 0.5s;
+
+/***************************************************************/
+
+.fadeInLeft{
+  animation: fadeInLeft 0.3s linear 0s 1 normal forwards;
+}
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-500px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.fadeInRight{
+  animation: fadeInRight 0.3s linear 0s 1 normal forwards;
+
+}
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(500px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.fadeInTop{
+  animation: fadeInTop 0.3s linear 0s 1 normal forwards;
+
+}
+@keyframes fadeInTop {
+	0% {
+		opacity: 0;
+		transform: translateY(-500px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
