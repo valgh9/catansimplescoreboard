@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     swordSound.volume = 0.5;
     const shieldSound = new Audio('sounds/shield.mp3');
     shieldSound.preload = 'auto';
+    shieldSound.volume = 0.6;
     const shipSound = new Audio('sounds/ship.mp3');
     shipSound.preload = 'auto';
 
