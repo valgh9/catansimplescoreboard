@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let resetBtnClicked = false;
     let animationRunning = false;
 
+    const backgroundImage = document.getElementById('backgroundImage');
 
     const totalAnimationDuration = 1500;
 
@@ -329,7 +330,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     activeKnightsMovement.addEventListener('click', function () {
 
-        // free slot 
+        if ( backgroundImage.className === "catanBg"){
+            backgroundImage.className = "";
+            backgroundImage.classList.add("defaultBg");
+        }
+        else{
+            backgroundImage.className = "";
+            backgroundImage.classList.add("catanBg");
+        }
 
     });
 

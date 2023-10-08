@@ -121,12 +121,17 @@ p {
 body {
   background-color: black;
 }
-
 section {
   height: 2400px;
   width: 1080px;
   margin: 0 auto;
+}
+.catanBg {
   background-image: url('../img/top-background.png');
+}
+
+.defaultBg{
+  background-image: url('../img/top-background.jpg');
 
 }
 
