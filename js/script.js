@@ -174,12 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 leftArrow.style.display = "block";
                 rightArrow.style.display = "none";
 
-                seaShadow.style.display = "block";
-                landShadow.style.display = "none";
-
                 winningSide = "knights";
-
-
 
             }
 
@@ -252,9 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 leftArrow.style.display = "none";
                 rightArrow.style.display = "block";
                 
-                seaShadow.style.display = "none";
-                landShadow.style.display = "block";
-
                 imgKnights.src = "img/black-knight.png";
 
                 winningSide = "pirates";
