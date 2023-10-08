@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const leftArrow = document.getElementById('left-arrow');
     const rightArrow = document.getElementById('right-arrow');
 
+    const seaShadow = document.getElementById('sea-shadow');
+    const landShadow = document.getElementById('land-shadow');
+
     let winningSide = "pirates";
     let currentTimerColor = "white";
 
@@ -73,13 +76,13 @@ document.addEventListener("DOMContentLoaded", function () {
             eventsContainer.style.display = 'block';
             eventBg.classList.add('fadeIn');
             setTimeout(() => {
-                eventBg.classList.remove('fadeIn');
+                eventBg.className = "";
                 eventBg.classList.add('fadeOut');
 
                 eventBg.addEventListener('animationend', () => {
                     // This code will run when the 'fadeOut' animation is completed
                     eventsContainer.style.display = 'none';
-                    eventBg.classList.remove('fadeOut');
+                    eventBg.className = "";
                     eventImg.src = "";
                     eventImg.className = "";
 
@@ -171,6 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 leftArrow.style.display = "block";
                 rightArrow.style.display = "none";
 
+                seaShadow.style.display = "block";
+                landShadow.style.display = "none";
+
                 winningSide = "knights";
 
 
@@ -189,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const highestValue = Math.max(...knightsCount);
             const duplicateHighestNumbers = findDuplicateHighestNumbers(knightsCount, highestValue);
 
+
             function findDuplicateHighestNumbers(knightsCount, highestValue) {
                 let duplicates = [];
                 if (highestValue != 0) {
@@ -202,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return [];
                 }
             }
+
 
             if (highestValue != 0 && duplicateHighestNumbers.length === 1) {
 
@@ -243,6 +251,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 leftArrow.style.display = "none";
                 rightArrow.style.display = "block";
+                
+                seaShadow.style.display = "none";
+                landShadow.style.display = "block";
 
                 imgKnights.src = "img/black-knight.png";
 
