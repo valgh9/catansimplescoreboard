@@ -353,12 +353,7 @@ section {
 #left-arrow,
 #right-arrow {
   position: absolute;
-  opacity: 0.5;
-}
-#sea-shadow,
-#land-shadow {
-  position: absolute;
-  opacity: 0.3;
+  opacity: 0.8;
 }
 
 #score-knights,
