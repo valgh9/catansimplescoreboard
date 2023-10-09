@@ -62,8 +62,8 @@
 
 .losing-side {
 
-  -webkit-filter: drop-shadow(0 0 3rem rgb(0, 0, 0)) grayscale(1) brightness(0.7);
-  filter: drop-shadow(0 0 3rem rgb(0, 0, 0)) grayscale(1) brightness(0.7);
+  -webkit-filter: drop-shadow(0 0 3rem rgb(0, 0, 0)) grayscale(1) brightness(0.8);
+  filter: drop-shadow(0 0 3rem rgb(0, 0, 0)) grayscale(1) brightness(0.8);
 
 }
 
