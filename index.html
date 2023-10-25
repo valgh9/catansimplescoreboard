@@ -38,8 +38,8 @@
 
         <dialog id="customDialog">
             <p>Reset?</p>
-            <button id="cancel-reset">No</button>
-            <button id="confirm-reset">Yes</button>
+            <button id="cancel-reset" onclick="cancelResetButtonFunc()">No</button>
+            <button id="confirm-reset" onclick="confirmResetButtonFunc()">Yes</button>
         </dialog>
 
         <div id="score">
@@ -51,7 +51,7 @@
                     <img src="img/columns-bg-left.png" id="left-arrow" alt="left-arrow-bg" style="display: none;">
 
                     <div class="score-top-box" id="score-top-box-knights">
-                        <button id="active-knights-mov">
+                        <button id="active-knights-mov" onclick="activeKnightsMovFunc()">
                             <img src="img/black-knight.png" id="img-knights" class="losing-side" alt="knight-image">
                         </button>
                     </div>
@@ -67,7 +67,7 @@
                     <img src="img/columns-bg-right.png" id="right-arrow"  alt="right-arrow-bg" >
 
                     <div class="score-top-box " id="score-top-box-pirate">
-                        <button id="barbs-ship-btn">
+                        <button id="barbs-ship-btn" onclick="barbsBtnFunc()">
                             <div class="boat">
                                 <img src="img/pirate.png" id="img-ship" class="glow-red" alt="pirateShip-image">
                             </div>
@@ -75,7 +75,7 @@
 
                     </div>
                     <div class="score-bottom-box" id="score-bottom-box-pirate">
-                        <button id="barbs-count-btn">
+                        <button id="barbs-count-btn" onclick="barbsCountFunc()">
                             <p id="barbs-count" class="glow-red">4</p>
                         </button>
                     </div>
@@ -94,10 +94,10 @@
         <div id="reset">
 
             <div class="reset-section">
-                <button class="button-30" id="reset-btn">RESET</button>
+                <button class="button-30" id="reset-btn" onclick="resetButtonFunc()">RESET</button>
             </div>
             <div class="reset-section">
-                <button class="button-30 timerButton animated-button1" id="clock-btn">
+                <button class="button-30 timerButton animated-button1" id="clock-btn" onclick="toogleTimerFunc()">
                      <p id="timerDisplay">2:00</p>
 
                 </button>
@@ -109,23 +109,23 @@
 
             <div class="top-row">
                 <div class="score-box">
-                    <button class="player-score-btn" id="orange">0</button>
-                    <button class="minus-btn" id="minus-orange">---</button>
+                    <button class="player-score-btn" id="orange" onclick="orangeButtonFunc()">0</button>
+                    <button class="minus-btn" id="minus-orange" onclick="minusOrangeButtonFunc()">---</button>
                 </div>
                 <div class="score-box">
-                    <button class="player-score-btn" id="red">0</button>
-                    <button class="minus-btn" id="minus-red">---</button>
+                    <button class="player-score-btn" id="red" onclick="redButtonFunc()">0</button>
+                    <button class="minus-btn" id="minus-red" onclick="minusRedButtonFunc()">---</button>
                 </div>
             </div>
 
             <div class="bottom-row">
                 <div class="score-box">
-                    <button class="player-score-btn" id="blue">0</button>
-                    <button class="minus-btn" id="minus-blue">---</button>
+                    <button class="player-score-btn" id="blue" onclick="blueButtonFunc()">0</button>
+                    <button class="minus-btn" id="minus-blue" onclick="minusBlueButtonFunc()">---</button>
                 </div>
                 <div class="score-box">
-                    <button class="player-score-btn" id="white">0</button>
-                    <button class="minus-btn" id="minus-white">---</button>
+                    <button class="player-score-btn" id="white" onclick="whiteButtonFunc()">0</button>
+                    <button class="minus-btn" id="minus-white" onclick="minusWhiteButtonFunc()">---</button>
                 </div>
             </div>
 

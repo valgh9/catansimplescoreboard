@@ -1,8 +1,4 @@
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-
     const OrangeButton = document.getElementById('orange');
     const RedButton = document.getElementById('red');
     const BlueButton = document.getElementById('blue');
@@ -316,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
         startSound.currentTime = 0;
 
     }
-    clockBtn.addEventListener('click', function () {
+    function toogleTimerFunc() {
 
         if (timerInterval) {
             stopAndResetTimer();
@@ -326,9 +322,9 @@ document.addEventListener("DOMContentLoaded", function () {
             startSound.play();
 
         }
-    });
+    }
 
-    activeKnightsMovement.addEventListener('click', function () {
+    function activeKnightsMovFunc() {
 
         if ( backgroundImage.className === "catanBg"){
             backgroundImage.className = "";
@@ -339,9 +335,9 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundImage.classList.add("catanBg");
         }
 
-    });
+    }
 
-    BarbsCountBtn.addEventListener('click', function () {
+    function barbsCountFunc() {
 
         let BarbsCurrentCountBtn = parseInt(BarbsCount.textContent, 10);
         if (BarbsCurrentCountBtn > 0) {
@@ -350,9 +346,9 @@ document.addEventListener("DOMContentLoaded", function () {
             updateKnightShipGlow();
         }
 
-    });
+    }
 
-    BarbsBtn.addEventListener('click', function () {
+    function barbsBtnFunc() {
 
         let BarbsCurrentCount = parseInt(BarbsCount.textContent, 10);
         if (BarbsCurrentCount >= 0) {
@@ -361,14 +357,14 @@ document.addEventListener("DOMContentLoaded", function () {
             updateKnightShipGlow();
         }
 
-    });
+    }
 
-    ResetButton.addEventListener('click', function () {
+    function resetButtonFunc() {
         customDialog.showModal();
-    });
+    }
 
 
-    confirmResetButton.addEventListener('click', () => {
+    function confirmResetButtonFunc() {
 
         resetBtnClicked = true;
         OrangeButton.textContent = '0';
@@ -380,11 +376,11 @@ document.addEventListener("DOMContentLoaded", function () {
         showPirateShipEvent();
 
         customDialog.close();
-    });
+    }
 
-    cancelResetButton.addEventListener('click', () => {
+    function cancelResetButtonFunc() {
         customDialog.close();
-    });
+    }
 
     function increaseKnightCount() {
 
@@ -405,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateKnightShipGlow();
     }
 
-    OrangeButton.addEventListener('click', function () {
+    function orangeButtonFunc() {
 
         let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
         OrangeCurrentCount++;
@@ -413,9 +409,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         increaseKnightCount();
 
-    });
+    }
 
-    RedButton.addEventListener('click', function () {
+    function redButtonFunc() {
 
         let RedCurrentCount = parseInt(RedButton.textContent, 10);
         RedCurrentCount++;
@@ -423,9 +419,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         increaseKnightCount();
 
-    });
+    }
 
-    BlueButton.addEventListener('click', function () {
+    function blueButtonFunc() {
 
         let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
         BlueCurrentCount++;
@@ -433,9 +429,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         increaseKnightCount();
 
-    });
+    }
 
-    WhiteButton.addEventListener('click', function () {
+    function whiteButtonFunc() {
 
         let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
         WhiteCurrentCount++;
@@ -443,9 +439,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         increaseKnightCount();
 
-    });
+    }
 
-    MinusOrangeButton.addEventListener('click', function () {
+    function minusOrangeButtonFunc() {
 
         let OrangeCurrentCount = parseInt(OrangeButton.textContent, 10);
         if (OrangeCurrentCount > 0) {
@@ -454,9 +450,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             decreaseKnightCount();
         }
-    });
+    }
 
-    MinusRedButton.addEventListener('click', function () {
+    function minusRedButtonFunc() {
 
         let RedCurrentCount = parseInt(RedButton.textContent, 10);
         if (RedCurrentCount > 0) {
@@ -466,9 +462,9 @@ document.addEventListener("DOMContentLoaded", function () {
             decreaseKnightCount();
 
         }
-    });
+    }
 
-    MinusBlueButton.addEventListener('click', function () {
+    function minusBlueButtonFunc() {
 
         let BlueCurrentCount = parseInt(BlueButton.textContent, 10);
         if (BlueCurrentCount > 0) {
@@ -478,9 +474,9 @@ document.addEventListener("DOMContentLoaded", function () {
             decreaseKnightCount();
 
         }
-    });
+    }
 
-    MinusWhiteButton.addEventListener('click', function () {
+    function minusWhiteButtonFunc() {
 
         let WhiteCurrentCount = parseInt(WhiteButton.textContent, 10);
         if (WhiteCurrentCount > 0) {
@@ -490,7 +486,4 @@ document.addEventListener("DOMContentLoaded", function () {
             decreaseKnightCount();
 
         }
-    });
-
-
-});
+    }
